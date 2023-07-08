@@ -22,6 +22,7 @@ $packageArgs = @{
     fileType      = 'exe'
     file          = $virtualBoxInstaller
     validExitCodes= @(0)
+    silentArgs    = '/silent'
 }
 
 Install-ChocolateyInstallPackage @packageArgs
@@ -34,6 +35,7 @@ $packageArgs = @{
     fileType      = 'exe'
     file          = $vsCodeInstaller
     validExitCodes= @(0)
+    silentArgs    = '/verysilent'
 }
 
 Install-ChocolateyInstallPackage @packageArgs
