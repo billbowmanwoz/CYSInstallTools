@@ -21,7 +21,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
     winget install wireshark
     winget install npcap
     
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack'))
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack'))-
 
     pause
 
