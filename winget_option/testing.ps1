@@ -32,6 +32,7 @@ if ($wingetInstalled -eq $null) {
     
     try {
         Install-Module -Name Microsoft.WinGet.Client
+        
         Start-Process -Wait -FilePath msiexec -ArgumentList "/i $installerPath /qn"
         Write-Host "Windows Package Manager (winget) has been installed."
     }
