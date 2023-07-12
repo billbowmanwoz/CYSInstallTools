@@ -25,16 +25,13 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
     pause
 
-    $wingetInstalled = Get-Command -Name winget -ErrorAction SilentlyContinue
+$wingetInstalled = Get-Command -Name winget -ErrorAction SilentlyContinue
 
 if ($wingetInstalled -eq $null) {
     Write-Host "Windows Package Manager (winget) is not installed. Installing..."
     
-    $installerPath = "$env:TEMP\winget_installer.msi"
-    $downloadUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/winget-cli-x64.msi"
-
     try {
-        Invoke-WebRequest -Uri $downloadUrl -OutFile $installerPath -UseBasicParsing
+        Install-Module -Name Microsoft.WinGet.Client
         Start-Process -Wait -FilePath msiexec -ArgumentList "/i $installerPath /qn"
         Write-Host "Windows Package Manager (winget) has been installed."
     }
