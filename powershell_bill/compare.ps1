@@ -1,5 +1,11 @@
 $NameOfOS = Get-ComputerInfo -Property OSName
-$OSVersion = Get-ComputerInfo -Property OSBuildnumber
+$OSVersionRaw = Get-ComputerInfo -Property OSBuildnumber
+$regexPattern = "(?<=\=)(.*)$"
+$OSVer = [regex]::Match($OSVersionRaw, $regexPattern)
+if ($match.Success){
+    $result = $match.Groups[1].Value.Trim()
+    Write-Host "Extracted information: $result"
+}
 
 if ($NameOfOS -match "Windows 11") {
     Write-Host "Windows 11! YAY!"
@@ -7,5 +13,8 @@ if ($NameOfOS -match "Windows 11") {
     Write-Host "Windows 10"
 }
 
-
-#If $OSVersion 
+If ($OSVersion -lt 17134){
+    Write-Host "NOSIR, No CYS for you!"
+}else {
+    Write-Host "You can do it!"
+}
