@@ -22,6 +22,7 @@ if ($doesWingetExist) {
         Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$installFolder\WinGet.msixbundle"
         Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Write-Host "You will need to close Powershell and re-run the original script to continue with this Installer."
+        Pause "Press ENTER to end"
         Exit
     }
 
