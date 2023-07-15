@@ -1,14 +1,19 @@
 Write-Host "Checking to see if software is alreay installed."
+$currentUserPath = Resolve-Path ~
+$doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
+
+Write-Host $doesWingetExist
+
 
 Write-Host "Installing applications for the discerning CYS Student"
 Write-Host "Starting with communication apps"
 Write-Host "Installing Zoom"
-winget install zoom 
+winget install --verbose zoom.zoom 
 Write-Host "Installing slack"
 winget install --verbose  slack
 Write-Host "Now Apps for courses"
 Write-Host "Installing wget"
-winget install wget
+winget install --verbose wget
 Write-Host "Installing Wireshark"
 winget install --verbose  wireshark
 winget install --verbose  winpcap
