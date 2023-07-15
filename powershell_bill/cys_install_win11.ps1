@@ -1,9 +1,29 @@
-Write-Host "Checking to see if software is alreay installed."
 $currentUserPath = Resolve-Path ~
+$desktopPath = [Environment]::GetFolderPath('Desktop')
+$installFolder = "$desktopPath\CYS-Installer"
+$OVAfolder = "$installFolder\OVAs"
+
 $doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
+$doesInstallerFolderExist = Test-Path -Path "$installFolder"
 
-Write-Host $doesWingetExist
 
+Write-Host "Setting download location to $desktopPath\CS-Installers"
+if($doesInstallerFolderExist){
+    Set-Location -Path "$installFolder"
+} else {
+    New-Item -ItemType Directory -Path "$installFolder"
+    Set-Location -Path "$installFolder"
+}
+
+Write-Host "Checking to see if software is alreay installed."
+if ($doesWingetExist) {
+    Write-Host "Winget is already installed"
+} else {
+        Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$installFolder\WinGet.msixbundle"
+        Add-AppxPackage "$installFolder\WinGet.msixbundle"
+        Write-Host "You will need to close Powershell and re-run the original script to continue with this Installer."
+        Exit
+    }
 
 Write-Host "Installing applications for the discerning CYS Student"
 Write-Host "Starting with communication apps"
@@ -24,9 +44,10 @@ winget install --verbose  vscode
 winget install --verbose  python3
 winget install --verbose  nmap
 
-
-#Start-Process -FilePath 'cmd.exe' -ArgumentList '/c "wget --no-check-cert https://dl.dropbox.com/s/t8rqyornhedwt4e/kali-2023.ova" ' -Wait
-#Start-Process -FilePath 'cmd.exe' -ArgumentList '/c "wget --no-check-cert https://www.dropbox.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt" ' -Wait
+New-Item -ItemType Directory -Path "$OVAfolder"
+Set-Location -Path "$OVAfolder"
+Start-Process -FilePath 'cmd.exe' -ArgumentList '/c "wget --no-check-cert -N https://dl.dropbox.com/s/t8rqyornhedwt4e/kali-2023.ova" ' -Wait
+#Start-Process -FilePath 'cmd.exe' -ArgumentList '/c "wget --no-check-cert -N https://www.dropbox.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt" ' -Wait
 
 
 
