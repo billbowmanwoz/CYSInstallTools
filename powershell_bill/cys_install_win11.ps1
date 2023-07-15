@@ -19,7 +19,8 @@ Write-Host "Checking to see if software is alreay installed."
 if ($doesWingetExist) {
     Write-Host "Winget is already installed"
 } else {
-        Invoke-WebRequest -Uri "https://aka.ms/vs/17/release/vc_redist.x64.exe" -UseBasicParsing -OutFile "$installFolder\vc_redist_x64.exe"
+        Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" -UseBasicParsing -OutFile "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+        Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
         Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$installFolder\WinGet.msixbundle"
         Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Write-Host "You will need to close Powershell and re-run the original script to continue with this Installer."
