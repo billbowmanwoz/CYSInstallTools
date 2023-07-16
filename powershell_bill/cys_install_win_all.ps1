@@ -29,7 +29,7 @@ $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 $appsWinget = @("zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
-                "Oracle.VirtualBox -v 7.0.6",
+                "Oracle.VirtualBox -v 7.0.8",
                 "Microsoft.VisualStudioCode",
                 "python3",
                 "Google.Chrome")
