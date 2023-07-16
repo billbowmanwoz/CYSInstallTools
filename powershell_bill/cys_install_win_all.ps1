@@ -19,7 +19,7 @@ $currentUserPath = Resolve-Path ~
 $desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
 $OVAfolder = "$installFolder\OVAs"
-
+$pfLocation = $Env:ProgramFiles
 
 Write-Host -ForegroundColor Yellow "Making sure certain locations exist`n"
 $doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
@@ -68,6 +68,8 @@ Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n
 .\wget --no-hsts --no-check-cert -N "https://nmap.org/dist/nmap-7.94-setup.exe"
 .\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack"
 
+Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
+& $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack
 
 Write-Host -ForegroundColor Yellow "Setting download location to $OVAfolder"
 if(-not $doesOVAFolderExist){
