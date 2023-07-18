@@ -37,13 +37,22 @@ $doesWgetExist = Test-Path -Path "$installFolder\wget.exe"
 $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 
-$appsWinget = @("zoom.zoom",
-                "SlackTechnologies.Slack",
-                "WiresharkFoundation.Wireshark",
-                "Oracle.VirtualBox",
-                "Microsoft.VisualStudioCode",
-                "python3",
-                "Google.Chrome")
+$appsWingetCheck = @("zoom.zoom",
+                    "SlackTechnologies.Slack",
+                    "WiresharkFoundation.Wireshark",
+                    "Oracle.VirtualBox",
+                    "Microsoft.VisualStudioCode",
+                    "python3",
+                    "Google.Chrome")
+
+$appsWingetInstall = New-Object System.Collections.ArrayList 
+foreach ($app in $appsWingetCheck){
+$doesAppExist = winget list $app
+$match = [regex]::Match($doesAppExist, "No installed package found")
+if ($match.Success) {
+    $appsWingetInstall += "$app"
+}
+}
 Write-Host -ForegroundColor Yellow "Setting download location to $installFolder`n"
 if(-not $doesInstallerFolderExist){
     New-Item -ItemType Directory -Path "$installFolder"
@@ -64,11 +73,11 @@ if (-not $doesWgetExist) {
         }
     get_required_files
 } else {
-    Write-Host -ForegroundColor White "Continuing installation, all files are installed."
+    Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
 }
 
 Write-Host -ForegroundColor Yellow "Installing applications for the discerning CYS Student`n"
-foreach ($app in $appsWinget){
+foreach ($app in $appsWingetInstall){
     winget install $app
 }
 Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n"
