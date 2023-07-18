@@ -1,3 +1,11 @@
+function get_required_files {
+    Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
+    .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
+    Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
+    .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/powershell_bill/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
+}
 function UACPause {
     Write-Host -ForegroundColor Red "Once You Press ENTER, please watch for a UAC Prompt to continue install"
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
@@ -43,18 +51,11 @@ Set-Location -Path "$installFolder"
 Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
 if ($doesWingetExist) {
     Write-Host -ForegroundColor Yellow "Winget is already installed"
-    Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-    Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
+    get_required_files  
 } else {
     Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
-    Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-    Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    get_required_files
     .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
-    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/powershell_bill/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
-    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Add-AppxPackage "$installFolder\WinGet.msixbundle"
 
     Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
