@@ -33,6 +33,7 @@ $pfLocation = $Env:ProgramFiles
 
 Write-Host -ForegroundColor Yellow "Making sure certain locations exist`n"
 $doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
+$doesWgetExist = Test-Path -Path "$instalFolder\wget.exe"
 $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 
@@ -53,7 +54,7 @@ Write-Host -ForegroundColor Yellow "Checking to see if software is already insta
 if ($doesWingetExist) {
     Write-Host -ForegroundColor Yellow "Winget is already installed"
     get_required_files  
-} else {
+} elseif (-not $doesWgetExist) {
     Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
     get_required_files
     .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
@@ -62,6 +63,8 @@ if ($doesWingetExist) {
     Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
     Pause
     Exit
+    } else {
+        Write-Host -ForegroundColor White "Continuing installation, all files are installed."
     }
 
 Write-Host -ForegroundColor Yellow "Installing applications for the discerning CYS Student`n"
