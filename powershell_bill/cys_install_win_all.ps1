@@ -7,7 +7,7 @@ function get_required_files {
     .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/powershell_bill/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
 }
 function UACPause {
-    Write-Host -ForegroundColor Red "Once You Press ENTER, please watch for a UAC Prompt to continue install"
+    Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
     Write-Host
 }
@@ -23,7 +23,8 @@ function hashCheck {
     }}
 #Beginning of Script
 Clear-Host
-Write-Host -ForegroundColor Yellow "`n`n`n`n`n`nSetting Locale Variables for Installation`n"
+UACPause
+Write-Host -ForegroundColor Yellow "Setting Location Variables for Installation`n"
 $currentUserPath = Resolve-Path ~
 $desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
