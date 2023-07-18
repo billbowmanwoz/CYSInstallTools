@@ -9,7 +9,7 @@ function get_required_files {
 function UACPause {
     Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-    Write-Host
+    Pause
 }
 function hashCheck {
     $storedHash = Get-Content -Path $hashStored
