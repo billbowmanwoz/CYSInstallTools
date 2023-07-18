@@ -4,12 +4,11 @@ function get_required_files {
     Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
     .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
-    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/powershell_bill/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
+    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
 }
 function UACPause {
     Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-
 }
 function hashCheck {
     $storedHash = Get-Content -Path $hashStored
@@ -21,6 +20,7 @@ function hashCheck {
         Write-Host "Hash values do not match. File may have been altered."
         Write-Host -ForegroundColor Black -BackgroundColor White "$fileToCheck does not pass hash check. You will need to re-download"
     }}
+
 #Beginning of Script
 Clear-Host
 UACPause
