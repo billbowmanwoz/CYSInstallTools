@@ -51,7 +51,7 @@ if(-not $doesInstallerFolderExist){
     New-Item -ItemType Directory -Path "$installFolder"
 }     
 Set-Location -Path "$installFolder"
-
+ 
 Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
 
 if (-not $doesWgetExist) {
