@@ -40,7 +40,7 @@ if(-not $doesInstallerFolderExist){
 }     
 Set-Location -Path "$installFolder"
 
-Write-Host -ForegroundColor Yellow "Checking to see if software is alreay installed.`n"
+Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
 if ($doesWingetExist) {
     Write-Host -ForegroundColor Yellow "Winget is already installed"
 } else {
