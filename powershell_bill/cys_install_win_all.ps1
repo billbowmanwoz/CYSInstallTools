@@ -50,6 +50,7 @@ if ($doesWingetExist) {
     Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
     .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
     .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
+    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/powershell_bill/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
     Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Add-AppxPackage "$installFolder\WinGet.msixbundle"
 
@@ -69,6 +70,9 @@ Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
 & $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack
+Write-Host -ForegroundColor Yellow "Next a Network will be created, in case it was not during install"
+& $pfLocation\Oracle\VirtualBox\VBoxManage natnetwork add --netname NATNetwork --network "10.0.2.0/24" --dhcp on
+
 
 Write-Host -ForegroundColor Yellow "Setting download location to $OVAfolder"
 if(-not $doesOVAFolderExist){
