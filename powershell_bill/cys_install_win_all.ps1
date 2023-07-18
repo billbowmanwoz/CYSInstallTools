@@ -43,6 +43,9 @@ Set-Location -Path "$installFolder"
 Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
 if ($doesWingetExist) {
     Write-Host -ForegroundColor Yellow "Winget is already installed"
+    Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
+    .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
+    Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
 } else {
     Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
