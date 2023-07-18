@@ -33,7 +33,6 @@ $appsWinget = @("zoom.zoom",
                 "Microsoft.VisualStudioCode",
                 "python3",
                 "Google.Chrome")
-
 Write-Host -ForegroundColor Yellow "Setting download location to $installFolder`n"
 if(-not $doesInstallerFolderExist){
     New-Item -ItemType Directory -Path "$installFolder"
@@ -47,7 +46,6 @@ if ($doesWingetExist) {
     Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
     .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-    UACPause
     Start-Process -FilePath ".\vc_redist.x64.exe" -ArgumentList "/quiet" -Wait
     .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
     .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
