@@ -13,6 +13,7 @@ function hashCheck {
         Write-Host "Hash values do not match. File may have been altered."
         Write-Host -ForegroundColor Black -BackgroundColor White "$fileToCheck does not pass hash check. You will need to re-download"
     }}
+#Beginning of Script
 Clear-Host
 Write-Host -ForegroundColor Yellow "`n`n`n`n`n`nSetting Locale Variables for Installation`n"
 $currentUserPath = Resolve-Path ~
