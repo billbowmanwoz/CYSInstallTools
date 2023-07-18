@@ -9,7 +9,7 @@ function get_required_files {
 function UACPause {
     Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-    Pause
+
 }
 function hashCheck {
     $storedHash = Get-Content -Path $hashStored
@@ -33,7 +33,7 @@ $pfLocation = $Env:ProgramFiles
 
 Write-Host -ForegroundColor Yellow "Making sure certain locations exist`n"
 $doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
-$doesWgetExist = Test-Path -Path "$instalFolder\wget.exe"
+$doesWgetExist = Test-Path -Path "$installFolder\wget.exe"
 $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 
@@ -51,21 +51,21 @@ if(-not $doesInstallerFolderExist){
 Set-Location -Path "$installFolder"
 
 Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
-if ($doesWingetExist) {
-    Write-Host -ForegroundColor Yellow "Winget is already installed"
-    get_required_files  
-} elseif (-not $doesWgetExist) {
-    Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
-    get_required_files
-    .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
-    Add-AppxPackage "$installFolder\WinGet.msixbundle"
 
-    Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
-    Pause
-    Exit
-    } else {
-        Write-Host -ForegroundColor White "Continuing installation, all files are installed."
-    }
+if (-not $doesWgetExist) {
+    if(-not $doesWingetExist) {
+        Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
+        get_required_files
+        .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
+        Add-AppxPackage "$installFolder\WinGet.msixbundle"
+        Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
+        Pause
+        Exit
+        }
+    get_required_files
+} else {
+    Write-Host -ForegroundColor White "Continuing installation, all files are installed."
+}
 
 Write-Host -ForegroundColor Yellow "Installing applications for the discerning CYS Student`n"
 foreach ($app in $appsWinget){
