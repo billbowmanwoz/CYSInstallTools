@@ -71,7 +71,7 @@ if (-not $doesWgetExist) {
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
 $appsWingetInstall = New-Object System.Collections.ArrayList
 $appsWingetUpgrade = New-Object System.Collections.ArrayList 
-foreach ($app in $appsWingetCheck){
+foreach ($app in $appsWinget){
     Write-Host "Checking for $app"
     $doesAppExist = winget list $app
     $match = [regex]::Match($doesAppExist, "No installed package found")
