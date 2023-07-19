@@ -53,7 +53,6 @@ if(-not $doesInstallerFolderExist){
 Set-Location -Path "$installFolder"
  
 Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
-
 if (-not $doesWgetExist) {
     if(-not $doesWingetExist) {
         Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
@@ -69,6 +68,7 @@ if (-not $doesWgetExist) {
     Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
 }
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
+winget list winget
 $appsWingetInstall = New-Object System.Collections.ArrayList
 $appsWingetUpgrade = New-Object System.Collections.ArrayList 
 foreach ($app in $appsWinget){
