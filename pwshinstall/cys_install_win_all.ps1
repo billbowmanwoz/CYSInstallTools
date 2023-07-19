@@ -68,6 +68,7 @@ if (-not $doesWgetExist) {
     Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
 }
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
+Write-Host -ForegroundColor Red "Please answer a 'y' to the question asked next"
 winget list winget
 $appsWingetInstall = New-Object System.Collections.ArrayList
 $appsWingetUpgrade = New-Object System.Collections.ArrayList 
@@ -122,5 +123,5 @@ for ($i = 0; $i -lt $length; $i++) {
         $fileToCheck = $ovaFileNames[$i]
         hashCheck
 }
-
+Write-Host -ForegroundColor Green "Installation process has completed. Please look back to see if any of the applications did not install, if they did not, please check with a mentor to see if there is any reason that it did not."
 Pause
