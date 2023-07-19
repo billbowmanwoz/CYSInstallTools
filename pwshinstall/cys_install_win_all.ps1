@@ -38,12 +38,12 @@ $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 
 $appsWinget = @("zoom.zoom",
-                    "SlackTechnologies.Slack",
-                    "WiresharkFoundation.Wireshark",
-                    "Oracle.VirtualBox",
-                    "Microsoft.VisualStudioCode",
-                    "python3",
-                    "Google.Chrome")
+                "SlackTechnologies.Slack",
+                "WiresharkFoundation.Wireshark",
+                "Oracle.VirtualBox",
+                "Microsoft.VisualStudioCode",
+                "python3",
+                "Google.Chrome")
 
 
 Write-Host -ForegroundColor Yellow "Setting download location to $installFolder`n"
@@ -68,8 +68,24 @@ if (-not $doesWgetExist) {
 } else {
     Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
 }
+Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
+$appsWingetInstall = New-Object System.Collections.ArrayList
+$appsWingetUpgrade = New-Object System.Collections.ArrayList 
+foreach ($app in $appsWingetCheck){
+    Write-Host "Checking for $app"
+    $doesAppExist = winget list $app
+    $match = [regex]::Match($doesAppExist, "No installed package found")
+    if ($match.Success) {
+        Write-Host -ForegroundColor Red "$app not found, adding to install list"
+        $appsWingetInstall += "$app"
+    } else {
+        Write-Host -ForegroundColor Green "$app found, adding to possible upgrade"
+        $appsWingetUpgrade += "$app"
+    }
+}
+
 Write-Host -ForegroundColor Yellow "Installing applications for the discerning CYS Student`n"
-foreach ($app in $appsWinget){
+foreach ($app in $appsWingetInstall){
     winget install $app
 }
 Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n"
