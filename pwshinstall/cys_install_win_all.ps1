@@ -108,7 +108,7 @@ if(-not $doesOVAFolderExist){
 }
 Set-Location -Path "$OVAfolder"
 
-..\wget --no-hsts --no-check-cert --no-verbose -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
+..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
 ..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 ..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo -O pfSense-Router.ova
 ..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/9rlqa83hqlq5bftjioeo2/pfSense-Router.ova.sha?rlkey=i58ioubob5srkiscgvubymue3 -O pfSense-Router.ova.sha
