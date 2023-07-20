@@ -29,6 +29,7 @@ $currentUserPath = Resolve-Path ~
 $desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
 $OVAfolder = "$installFolder\OVAs"
+$ISOfolder = "$installFolder\ISOs"
 $pfLocation = $Env:ProgramFiles
 
 Write-Host -ForegroundColor Yellow "Making sure certain locations exist`n"
@@ -36,6 +37,7 @@ $doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\Win
 $doesWgetExist = Test-Path -Path "$installFolder\wget.exe"
 $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
+$doesISOFolderExist = Test-Path -Path "$ISOfolder"
 
 $appsWinget = @("zoom.zoom",
                 "SlackTechnologies.Slack",
@@ -103,13 +105,22 @@ Write-Host -ForegroundColor Yellow "Next a Network will be created, in case it w
 Write-Host -ForegroundColor Yellow "Setting download location to $OVAfolder"
 if(-not $doesOVAFolderExist){
     New-Item -ItemType Directory -Path "$OVAfolder"
-}     
+}
 Set-Location -Path "$OVAfolder"
 
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
+..\wget --no-hsts --no-check-cert --no-verbose -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
+..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 ..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo -O pfSense-Router.ova
 ..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/9rlqa83hqlq5bftjioeo2/pfSense-Router.ova.sha?rlkey=i58ioubob5srkiscgvubymue3 -O pfSense-Router.ova.sha
+
+Write-Host -ForegroundColor Yellow "Setting download location to $ISOfolder"
+
+if(-not $doesISOFolderExist){
+    New-Item -ItemType Directory -Path "$ISOfolder"
+}
+Set-Location -Path "$ISOfolder"
+..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/s/wo5lkj6ps7avz40/ubuntu-22.04.1-live-server-amd64.iso -O ubuntu-22.04.1-live-server-amd64.iso
+..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/snx6yh5a9phz30gwrv86a/ubuntu-22.04.1-live-server-amd64.iso.sha?rlkey=648qz1xpiw265athy7ghor2w4 -O ubuntu-22.04.1-live-server-amd64.iso.sha
 
 $ovaFileNames = @("kali-2023.ova",
                 "pfSense-Router.ova")
