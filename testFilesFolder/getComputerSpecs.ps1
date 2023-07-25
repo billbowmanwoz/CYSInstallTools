@@ -6,18 +6,24 @@ function getDriveSpecs {
     Write-Host "And has $driveCapacityLeftInGB remaining"
 }
 
-
 function getProc{
-    $ProcInfo = Get-CimInstance Win32_Processor
-    $procName = Select-Object Name
-    Write-Host "Processor Manufacturer: $ProcInfo.Manufacturer"
-    Write-Host "Processor Name:" $procName
-    Write-Host "Number of Cores / Logical Processors:+ "$ProcInfo.NumberofCores+ "/" + $ProcInfo.NumberOfProcessors +"`n"   
-    $ProcInfo | Select-Object Name, Manufacturer, NumberOfCores, NumberOfLogicalProcessors
+    $ProcessorInfo = Get-CimInstance Win32_Processor
+    $ProcName = $ProcessorInfo | Select-Object Name
+    $ProcCores = $ProcessorInfo | Select-Object NumberOfCores
+    $ProcThreads = $ProcessorInfo | Select-Object NumberOfLogicalProcessors
 
+    Write-Host "Processor Name:" $procName.Name
+    Write-Host "Number of Cores / Logical Processors:+ "$ProcCores.NumberOfCores " / "$ProcThreads.NumberOfLogicalProcessors"`n"   
+#    $ProcInfo | Select-Object Name, Manufacturer, NumberOfCores, NumberOfLogicalProcessors
+}
+function getRAM{
+    $ram = Get-WmiObject -Class Win32_ComputerSystem | Select-Object TotalPhysicalMemory
+    $ramSizeGB = $ram.TotalPhysicalMemory / 1GB
+    $ramOutPut = "RAM Size: {0:N2} GB" -f $ramSizeGB
+    Write-Host $ramOutPut
 }
 
-
 getProc
-
 getDriveSpecs
+getRAM
+
