@@ -1,6 +1,6 @@
 function getOS {
     $osName = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption
-    Write-Host "`n`nThe Current Operating System software is: " $osName.Caption "`n"
+    Write-Host "`n`nThe Current Operating System software is:" $osName.Caption "`n"
 }
 function getDriveSpecs {
     $mainDriveSize = Get-Volume -DriveLetter C
