@@ -72,6 +72,10 @@ if (-not $doesWgetExist) {
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
 Write-Host -ForegroundColor Red "Please answer a 'y' to the question asked next"
 winget list winget
+$vbInfo = winget search Oracle.Virtualbox
+$vbVerPattern = '\b\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+$vbInfoClean = $vbInfo | Select-String -Pattern $vbVerPattern
+$vbAppVersion = $vbInfoClean.Matches.Value
 $appsWingetInstall = New-Object System.Collections.ArrayList
 $appsWingetUpgrade = New-Object System.Collections.ArrayList 
 foreach ($app in $appsWinget){
@@ -94,7 +98,7 @@ foreach ($app in $appsWingetInstall){
 Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n"
 
 .\wget --no-hsts --no-check-cert -N "https://nmap.org/dist/nmap-7.94-setup.exe"
-.\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack"
+.\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VM_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
 & $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack
