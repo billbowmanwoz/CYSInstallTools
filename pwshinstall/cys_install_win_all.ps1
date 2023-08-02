@@ -45,7 +45,8 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x86",
                 "Oracle.VirtualBox",
                 "Microsoft.VisualStudioCode",
                 "python3",
-                "Google.Chrome")
+                "Brave.Brave",
+                "DuckDuckGo.DesktopBrowser")
 
 
 Write-Host -ForegroundColor Yellow "Setting download location to $installFolder`n"
