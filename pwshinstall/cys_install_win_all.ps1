@@ -1,7 +1,5 @@
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-    Start-Process -FilePath ".\vc_redist.x64.exe" -Wait
     .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
@@ -39,7 +37,9 @@ $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 $doesISOFolderExist = Test-Path -Path "$ISOfolder"
 
-$appsWinget = @("zoom.zoom",
+$appsWinget = @("Microsoft.VCRedist.2015+.x86",
+                "Microsoft.VCRedist.2015+.x64",
+                "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
                 "Oracle.VirtualBox",
