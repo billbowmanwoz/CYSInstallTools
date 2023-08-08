@@ -2,14 +2,24 @@ function getOS {
     $osName = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption
     Write-Host "`n`nThe Current Operating System software is:" $osName.Caption "`n"
 }
-function getDriveSpecs {
-    $mainDriveSize = Get-Volume -DriveLetter C
-    $driveCapacityinGB = "{0:N2} GB" -f ($mainDriveSize.Size / 1GB)
-    $driveCapacityLeftInGB = "{0:N2} GB" -f ($mainDriveSize.SizeRemaining / 1GB)
-    Write-Host "The Main Drive has a total size of $driveCapacityinGB"
-    Write-Host "And has $driveCapacityLeftInGB remaining`n"
+# function getDriveSpecs {
+#     $mainDriveSize = Get-Volume -DriveLetter C
+#     $driveCapacityinGB = "{0:N2} GB" -f ($mainDriveSize.Size / 1GB)
+#     $driveCapacityLeftInGB = "{0:N2} GB" -f ($mainDriveSize.SizeRemaining / 1GB)
+#     Write-Host "The Main Drive has a total size of $driveCapacityinGB"
+#     Write-Host "And has $driveCapacityLeftInGB remaining`n"
+# }
+function getDriveSpecs{
+    $drives = Get-CimInstance Win32_LogicalDisk | Select-Object DeviceID, FreeSpace, Size
+    $driveInfo = $drives | ForEach-Object {
+    [PSCustomObject]@{
+        'Drive Letter' = $_.DeviceID
+        'Free Space (GB)' = [math]::Round($_.FreeSpace / 1GB, 2)
+        'Total Size (GB)' = [math]::Round($_.Size / 1GB, 2)
+    }
 }
-
+$driveInfo | Format-Table -AutoSize
+}
 function getProc{
     $ProcessorInfo = Get-CimInstance Win32_Processor
     $ProcName = $ProcessorInfo | Select-Object Name
