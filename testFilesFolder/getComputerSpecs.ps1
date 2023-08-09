@@ -1,7 +1,8 @@
 $sysinfo = {
     systeminfo
 }
-$vmStatus = Start-Job -ScriptBlock $sysInfo | Select-String -Pattern 'Virtualization Enabled In Firmware'
+
+#$vmStatus = Start-Job -ScriptBlock $sysInfo | Select-String -Pattern 'Virtualization Enabled In Firmware'
 function getOS {
     $osName = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption
     Write-Host "`n`nThe Current Operating System software is:" $osName.Caption "`n"
@@ -40,11 +41,10 @@ function getRAM{
     Write-Host $ramOutPut
 }
 function getVMStatus {
-
     if ($vmStatus = 'Virtualization Enabled In Firmware: Yes'){
         Write-Host "Virtualization is Enabled"
     }else{
-        Write-Host "Virtulization is NOT enabled"
+        Write-Host -Foreground Color Red -BackgroundColor = White "Virtulization is NOT enabled"
     }
 }
 
