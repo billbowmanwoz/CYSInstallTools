@@ -2,11 +2,11 @@ $systemInfo = systeminfo
 
 $osRegex = $osRegex = 'OS Name:\s+(.+)$'
 $buildRegex = '(.+N/A Build )(.+)$'
-#$virtRegex_11 = 'Virtualization Enabled in Firmware'
+$virtRegex_11 = 'Virtualization Enabled in Firmware'
 
 $osName = $systemInfo | Select-String -Pattern $osRegex | ForEach-Object { $_.Matches.Groups[1].Value }
 $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Object { $_.Matches.Groups[2].Value }
-#$virtEnabled = $systemInfo | Select-String  -Pattern 
+#$virtEnabled = $systemInfo | Select-String  -Pattern $virtRegex_11
 
 if ($osName -match "Windows 11") {
     Write-Host "Windows 11! YAY!"

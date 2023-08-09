@@ -1,3 +1,7 @@
+$sysinfo = {
+    systeminfo
+}
+$vmStatus = Start-Job -ScriptBlock $sysInfo | Select-String -Pattern 'Virtualization Enabled In Firmware'
 function getOS {
     $osName = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption
     Write-Host "`n`nThe Current Operating System software is:" $osName.Caption "`n"
@@ -28,7 +32,6 @@ function getProc{
 
     Write-Host "Processor Name:" $procName.Name
     Write-Host "Number of Cores / Logical Processors: "$ProcCores.NumberOfCores "/"$ProcThreads.NumberOfLogicalProcessors"`n"   
-#    $ProcInfo | Select-Object Name, Manufacturer, NumberOfCores, NumberOfLogicalProcessors
 }
 function getRAM{
     $ram = Get-WmiObject -Class Win32_ComputerSystem | Select-Object TotalPhysicalMemory
@@ -36,9 +39,20 @@ function getRAM{
     $ramOutPut = "RAM Size: {0:N2} GB`n" -f $ramSizeGB
     Write-Host $ramOutPut
 }
+function getVMStatus {
+
+    if ($vmStatus = 'Virtualization Enabled In Firmware: Yes'){
+        Write-Host "Virtualization is Enabled"
+    }else{
+        Write-Host "Virtulization is NOT enabled"
+    }
+}
+
+
 Clear-Host
 getOS
 getProc
 getRAM
+getVMStatus
 getDriveSpecs
 #Pause
