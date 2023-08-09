@@ -1,6 +1,6 @@
-$sysinfo = {
-    systeminfo
-}
+# $sysinfo = {
+#     systeminfo
+# }
 
 #$vmStatus = Start-Job -ScriptBlock $sysInfo | Select-String -Pattern 'Virtualization Enabled In Firmware'
 function getOS {
@@ -40,19 +40,19 @@ function getRAM{
     $ramOutPut = "RAM Size: {0:N2} GB`n" -f $ramSizeGB
     Write-Host $ramOutPut
 }
-function getVMStatus {
-    if ($vmStatus = 'Virtualization Enabled In Firmware: Yes'){
-        Write-Host "Virtualization is Enabled"
-    }else{
-        Write-Host -Foreground Color Red -BackgroundColor = White "Virtulization is NOT enabled"
-    }
-}
+# function getVMStatus {
+#     if ($vmStatus = 'Virtualization Enabled In Firmware: Yes'){
+#         Write-Host "Virtualization is Enabled"
+#     }else{
+#         Write-Host -Foreground Color Red -BackgroundColor = White "Virtualization is NOT enabled"
+#     }
+# }
 
 
 Clear-Host
 getOS
 getProc
 getRAM
-getVMStatus
+#getVMStatus
 getDriveSpecs
 #Pause
