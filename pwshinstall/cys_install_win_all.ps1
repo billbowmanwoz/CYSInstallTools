@@ -133,11 +133,11 @@ $hashFilenames = @("kali-2023-sha.txt",
                 "pfSense-router.ova.sha")
 
 $length = $ovaFileNames.Length
-
 for ($i = 0; $i -lt $length; $i++) {
         $hashStored = $hashFilenames[$i]
         $fileToCheck = $ovaFileNames[$i]
         hashCheck
 }
+
 Write-Host -ForegroundColor Green "Installation process has completed. Please look back to see if any of the applications did not install, if they did not, please check with a mentor to see if there is any reason that it did not."
 Pause
