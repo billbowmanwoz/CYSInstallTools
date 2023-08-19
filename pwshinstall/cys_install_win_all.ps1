@@ -132,6 +132,7 @@ $ovaFileNames = @("kali-2023.ova",
 $hashFilenames = @("kali-2023-sha.txt",
                 "pfSense-router.ova.sha")
 
+
 $length = $ovaFileNames.Length
 for ($i = 0; $i -lt $length; $i++) {
         $hashStored = $hashFilenames[$i]
