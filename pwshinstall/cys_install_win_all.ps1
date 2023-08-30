@@ -102,7 +102,7 @@ Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n
 .\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VM_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
-& $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack
+& $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack
 Write-Host -ForegroundColor Yellow "Next a Network will be created, in case it was not during install"
 & $pfLocation\Oracle\VirtualBox\VBoxManage natnetwork add --netname NATNetwork --network "10.0.2.0/24" --dhcp on
 
