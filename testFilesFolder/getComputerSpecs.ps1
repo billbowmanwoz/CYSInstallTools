@@ -37,12 +37,12 @@ function getRAM{
 }
 function getVMStatus {
     $vm = systeminfo | Select-String -Pattern "Virtualization"
-    $vm2 = "Hyper-V Requirements:"
+    $vm2 = $vm | Select-String -Pattern "Hyper-V Requirements:"
     $pattern = "yes|Yes"
     $pattern2 = "A hypervisor has been detected"
     if ($vm | Select-String -Pattern $pattern -CaseSensitive) {
         Write-Host "Virtualization is enabled"
-        elseif ($vm2 | Select-String -Pattern $pattern2 - CaseSensitive) {
+        elseif ($vm2 | Select-String -Pattern $pattern2 -CaseSensitive) {
             Write-Host "Virtualization is enabled"
         }
     } else {
