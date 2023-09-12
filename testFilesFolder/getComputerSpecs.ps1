@@ -2,13 +2,6 @@ function getOS {
     $osName = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption
     Write-Host "`n`nThe Current Operating System software is:" $osName.Caption "`n"
 }
-# function getDriveSpecs {
-#     $mainDriveSize = Get-Volume -DriveLetter C
-#     $driveCapacityinGB = "{0:N2} GB" -f ($mainDriveSize.Size / 1GB)
-#     $driveCapacityLeftInGB = "{0:N2} GB" -f ($mainDriveSize.SizeRemaining / 1GB)
-#     Write-Host "The Main Drive has a total size of $driveCapacityinGB"
-#     Write-Host "And has $driveCapacityLeftInGB remaining`n"
-# }
 function getDriveSpecs{
     $drives = Get-CimInstance Win32_LogicalDisk | Select-Object DeviceID, FreeSpace, Size
     $driveInfo = $drives | ForEach-Object {
@@ -52,7 +45,7 @@ function getVMStatus {
     }
 }
 
-Clear-Host
+
 getOS
 getProc
 getRAM
