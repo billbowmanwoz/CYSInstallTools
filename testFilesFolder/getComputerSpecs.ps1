@@ -45,7 +45,7 @@ function getVMStatus {
     }
 }
 
-
+Clear-Host
 getOS
 getProc
 getRAM
