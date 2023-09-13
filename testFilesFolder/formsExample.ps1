@@ -8,12 +8,6 @@ $form = New-Object Windows.Forms.Form -Property @{
     Topmost       = $true
 }
 
-$calendar = New-Object Windows.Forms.MonthCalendar -Property @{
-    ShowTodayCircle   = $false
-    MaxSelectionCount = 1
-}
-$form.Controls.Add($calendar)
-
 $okButton = New-Object Windows.Forms.Button -Property @{
     Location     = New-Object Drawing.Point 38, 165
     Size         = New-Object Drawing.Size 75, 23
@@ -35,6 +29,5 @@ $form.Controls.Add($cancelButton)
 $result = $form.ShowDialog()
 
 if ($result -eq [Windows.Forms.DialogResult]::OK) {
-    $date = $calendar.SelectionStart
-    Write-Host "Date selected: $($date.ToShortDateString())"
+   Start-Process
 }
