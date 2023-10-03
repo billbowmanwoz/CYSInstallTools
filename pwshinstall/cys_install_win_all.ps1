@@ -60,7 +60,7 @@ if (-not $doesWgetExist) {
     if(-not $doesWingetExist) {
         Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
         get_required_files
-        .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -O "WinGet.msixbundle"
+        .\wget --no-hsts --no-check-cert -N "https://aka.ms/getwinget" -O "WinGet.msixbundle"
         Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
         Pause
