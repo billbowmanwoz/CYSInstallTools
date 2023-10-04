@@ -37,14 +37,13 @@ $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 $doesISOFolderExist = Test-Path -Path "$ISOfolder"
 
-$appsWinget = @("Microsoft.VCRedist.2015+.x86",
-                "Microsoft.VCRedist.2015+.x64",
+$appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
                 "Oracle.VirtualBox",
                 "Microsoft.VisualStudioCode",
-                "python3",
+                "python.python.3.11",
                 "Brave.Brave",
                 "DuckDuckGo.DesktopBrowser")
 
