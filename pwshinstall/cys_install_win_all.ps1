@@ -62,8 +62,8 @@ if (-not $doesWgetExist) {
         get_required_files
         .\wget --no-hsts --no-check-cert -N "https://aka.ms/getwinget" -O "WinGet.msixbundle"
         .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx" -O "Microsoft.UI.Xaml.2.7.x64.appx"
-        Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Add-AppxPackage "$installFolder\Microsoft.UI.Xaml.2.7.x64.appx"
+        Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
         Pause
         Exit
