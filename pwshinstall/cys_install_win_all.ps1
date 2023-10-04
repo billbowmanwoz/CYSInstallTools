@@ -38,6 +38,7 @@ $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 $doesISOFolderExist = Test-Path -Path "$ISOfolder"
 
 $appsWinget = @("Microsoft.VCRedist.2015+.x64",
+                "Microsoft.VCRedist.2015+.x86",
                 "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
