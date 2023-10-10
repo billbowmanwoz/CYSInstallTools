@@ -42,11 +42,13 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
+                "Insecure.Npcap"
                 "Oracle.VirtualBox",
                 "Microsoft.VisualStudioCode",
                 "python.python.3.11",
                 "Brave.Brave",
-                "DuckDuckGo.DesktopBrowser")
+                "DuckDuckGo.DesktopBrowser",
+                "7zip.7zip")
 
 
 Write-Host -ForegroundColor Yellow "Setting download location to $installFolder`n"
