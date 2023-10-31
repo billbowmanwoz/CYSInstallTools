@@ -1,7 +1,16 @@
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    $systemRoot = $env:SystemRoot
+    $system32Path = Join-Path $systemRoot "System32"
+    $filePrefix = "vcruntime"
+    # Use Test-Path with wildcard to check if any file with the specified prefix exists
+    if (-not (Test-Path -Path (Join-Path $system32Path "$filePrefix*")) {
+        .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+        Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    } 
+    else {
+        Write-Host "Visual C++ Runtime already exists. Continuing."
+    }
     .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
 }
 function UACPause {
