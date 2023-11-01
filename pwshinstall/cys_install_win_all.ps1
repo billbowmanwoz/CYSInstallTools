@@ -3,7 +3,7 @@ function get_required_files {
     $systemRoot = $env:SystemRoot
     $system32Path = Join-Path $systemRoot "System32"
     $filePrefix = "vcruntime"
-    $filePath = Join-Path $directoryPath "$filePrefix*.dll"
+    $filePath = Join-Path $system32Path "$filePrefix*.dll"
     # Use Test-Path with wildcard to check if any file with the specified prefix exists
     if (-not (Test-Path -Path $filePath)) {
         .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
