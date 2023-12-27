@@ -2,13 +2,13 @@ $systemInfo = systeminfo
 
 $osRegex = $osRegex = 'OS Name:\s+(.+)$'
 $buildRegex = '(.+N/A Build )(.+)$'
-
 $osName = $systemInfo | Select-String -Pattern $osRegex | ForEach-Object { $_.Matches.Groups[1].Value }
 $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Object { $_.Matches.Groups[2].Value }
 
 function nextSteps {
     $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
-    Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Wait
+    Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Verb RunAs
+    $host.SetShouldExit()
     }
 
 if ($osName -match "Windows 11") {
