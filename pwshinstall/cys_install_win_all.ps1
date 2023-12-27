@@ -10,12 +10,26 @@ $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Obje
 
 if ($osName -match "Windows 11") {
     Write-Host "Windows 11! YAY!"
+    Pause
+    $osVer = "11"
+    nextSteps
 }elseif($osName -match "Windows 10") {
     Write-Host "Windows 10"
     If ($OSBuildNumber -lt 17134){
-        Write-Host "NOSIR, No CYS for you!"
+        Write-Host "This computer is not compatible with the applications for the Cyber Security Program"
     }else {
-        Write-Host "You can do it!"
+        Write-Host "Windows 10, Moving on!"
+        Pause
+        $osVer = "10"
+        nextSteps
     }   
 
 }
+
+# Now, call Script2.ps1 with the same ExecutionPolicy
+function nextSteps {
+$scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
+Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Wait
+}
+
+#Set-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1'))
