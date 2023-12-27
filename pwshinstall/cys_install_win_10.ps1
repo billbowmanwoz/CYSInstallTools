@@ -1,8 +1,8 @@
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
     $systemRoot = $env:SystemRoot
-    $system32Path = Join-Path $systemRoot "System32"
-    $filePrefix = "vcruntime"
+    #$system32Path = Join-Path $systemRoot "System32"
+    #$filePrefix = "vcruntime"
     # $filePath = Join-Path $system32Path "$filePrefix*.dll"
     # # Use Test-Path with wildcard to check if any file with the specified prefix exists
     # if (-not (Test-Path -Path $filePath)) {

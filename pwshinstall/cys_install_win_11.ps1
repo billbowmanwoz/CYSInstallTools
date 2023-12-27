@@ -1,8 +1,8 @@
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
     $systemRoot = $env:SystemRoot
-    $system32Path = Join-Path $systemRoot "System32"
-    $filePrefix = "vcruntime"
+    #$system32Path = Join-Path $systemRoot "System32"
+    #$filePrefix = "vcruntime"
     # $filePath = Join-Path $system32Path "$filePrefix*.dll"
     # # Use Test-Path with wildcard to check if any file with the specified prefix exists
     # if (-not (Test-Path -Path $filePath)) {
@@ -14,7 +14,7 @@ function get_required_files {
     # else {
     #     Write-Host "Visual C++ Runtime already exists. Continuing."
     # }
-    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
+    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_11.ps1" -O "$desktopPath\cys_install_win_11.ps1"
 }
 function UACPause {
     Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"

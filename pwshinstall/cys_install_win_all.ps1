@@ -2,11 +2,14 @@ $systemInfo = systeminfo
 
 $osRegex = $osRegex = 'OS Name:\s+(.+)$'
 $buildRegex = '(.+N/A Build )(.+)$'
-$virtRegex_11 = 'Virtualization Enabled in Firmware'
 
 $osName = $systemInfo | Select-String -Pattern $osRegex | ForEach-Object { $_.Matches.Groups[1].Value }
 $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Object { $_.Matches.Groups[2].Value }
-#$virtEnabled = $systemInfo | Select-String  -Pattern $virtRegex_11
+
+function nextSteps {
+    $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
+    Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Wait
+    }
 
 if ($osName -match "Windows 11") {
     Write-Host "Windows 11! YAY!"
@@ -27,9 +30,6 @@ if ($osName -match "Windows 11") {
 }
 
 # Now, call Script2.ps1 with the same ExecutionPolicy
-function nextSteps {
-$scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
-Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Wait
-}
+
 
 #Set-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1'))
