@@ -8,7 +8,7 @@ $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Obje
 function nextSteps {
     $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
     Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -Scope Process; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Verb RunAs
-    $host.SetShouldExit()
+    exit
     }
 
 if ($osName -match "Windows 11") {
