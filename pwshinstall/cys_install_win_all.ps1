@@ -3,15 +3,17 @@ function get_required_files {
     $systemRoot = $env:SystemRoot
     $system32Path = Join-Path $systemRoot "System32"
     $filePrefix = "vcruntime"
-    $filePath = Join-Path $system32Path "$filePrefix*.dll"
-    # Use Test-Path with wildcard to check if any file with the specified prefix exists
-    if (-not (Test-Path -Path $filePath)) {
-        .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-        Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
-    } 
-    else {
-        Write-Host "Visual C++ Runtime already exists. Continuing."
-    }
+    # $filePath = Join-Path $system32Path "$filePrefix*.dll"
+    # # Use Test-Path with wildcard to check if any file with the specified prefix exists
+    # if (-not (Test-Path -Path $filePath)) {
+    .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    Pause
+
+    # } 
+    # else {
+    #     Write-Host "Visual C++ Runtime already exists. Continuing."
+    # }
     .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_all.ps1" -O "$desktopPath\cys_install_win_all.ps1"
 }
 function UACPause {
@@ -35,7 +37,7 @@ UACPause
 Write-Host -ForegroundColor Yellow "Setting Location Variables for Installation`n"
 $currentUserPath = Resolve-Path ~
 $desktopPath = [System.IO.Path]::Combine($env:Public, 'Desktop')
-#$desktopPath = [Environment]::GetFolderPath('Desktop')
+#desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
 $OVAfolder = "$installFolder\OVAs"
 $ISOfolder = "$installFolder\ISOs"
