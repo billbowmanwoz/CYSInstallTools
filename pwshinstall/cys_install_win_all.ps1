@@ -12,7 +12,7 @@ function nextSteps {
     }
 
 if ($osName -match "Windows 11") {
-    Write-Host "Windows 11! YAY!"
+    Write-Host "Windows 11"
     Pause
     $osVer = "11"
     nextSteps
@@ -21,7 +21,7 @@ if ($osName -match "Windows 11") {
     If ($OSBuildNumber -lt 17134){
         Write-Host "This computer is not compatible with the applications for the Cyber Security Program"
     }else {
-        Write-Host "Windows 10, Moving on!"
+        Write-Host "Windows 10!"
         Pause
         $osVer = "10"
         nextSteps
