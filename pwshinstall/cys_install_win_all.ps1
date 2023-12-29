@@ -7,7 +7,7 @@ if(!Test-Path -Path c:\CYS_begun.txt) {
     $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Object { $_.Matches.Groups[2].Value }
 
     function nextSteps {
-        $osVer | | Out-File -FilePath $env:USERPROFILE\CYS_begun.txt
+        $osVer | Out-File -FilePath $env:USERPROFILE\CYS_begun.txt
         $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
         Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Verb RunAs
         [Environment]::Exit(1)
