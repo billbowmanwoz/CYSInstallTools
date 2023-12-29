@@ -1,4 +1,6 @@
-if(!Test-Path -Path c:\CYS_begun.txt) {
+$test_file =  "$env:USERPROFILE\CYS_begun.txt"
+
+if(!(Test-Path -Path $test_file)) {
     $systemInfo = systeminfo
 
     $osRegex = $osRegex = 'OS Name:\s+(.+)$'
