@@ -32,7 +32,7 @@ if(!(Test-Path -Path $test_file)) {
 
     }
 }else{
-    $osVer = Get-Content -Path c:\CYS_begun.txt
+    $osVer = Get-Content -Path $test_file
     nextSteps
 }
 # Now, call Script2.ps1 with the same ExecutionPolicy
