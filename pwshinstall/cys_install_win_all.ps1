@@ -1,5 +1,12 @@
 $test_file =  "$env:USERPROFILE\CYS_begun.txt"
 
+function nextSteps {
+    $osVer | Out-File -FilePath $env:USERPROFILE\CYS_begun.txt
+    $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
+    Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Verb RunAs
+    [Environment]::Exit(1)
+    }
+
 if(!(Test-Path -Path $test_file)) {
     $systemInfo = systeminfo
 
@@ -8,12 +15,7 @@ if(!(Test-Path -Path $test_file)) {
     $osName = $systemInfo | Select-String -Pattern $osRegex | ForEach-Object { $_.Matches.Groups[1].Value }
     $OSBuildNumber = $systemInfo | Select-String -Pattern $buildRegex | ForEach-Object { $_.Matches.Groups[2].Value }
 
-    function nextSteps {
-        $osVer | Out-File -FilePath $env:USERPROFILE\CYS_begun.txt
-        $scriptName = "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_$osver.ps1"
-        Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass; iex ((New-Object System.Net.WebClient).DownloadString('$scriptName'))" -Verb RunAs
-        [Environment]::Exit(1)
-        }
+ 
 
     if ($osName -match "Windows 11") {
         Write-Host "Windows 11"
