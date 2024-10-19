@@ -58,6 +58,7 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "Insecure.Npcap"
                 "Oracle.VirtualBox",
                 "AivarAnnamaa.Thonny",
+                "PuTTY.PuTTY",
                 "Microsoft.VisualStudioCode",
                 "python.python.3.11",
                 "Brave.Brave",
