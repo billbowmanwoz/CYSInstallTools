@@ -118,7 +118,7 @@ foreach ($app in $appsWingetInstall){
 Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n"
 
 .\wget --no-hsts --no-check-cert -N "https://nmap.org/dist/nmap-7.94-setup.exe"
-.\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VM_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"
+.\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
 & $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VM_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack --accept-license=33d7284dc4a0ece381196fda3cfe2ed0e1e8e7ed7f27b9a9ebc4ee22e24bd23c
