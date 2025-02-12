@@ -78,7 +78,9 @@ if (-not $doesWgetExist) {
         Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
         get_required_files
         .\wget --no-hsts --no-check-cert -N "https://aka.ms/getwinget" -O "WinGet.msixbundle"
-        .\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx" -O "Microsoft.UI.Xaml.2.7.x64.appx"
+        #.\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx" -O "Microsoft.UI.Xaml.2.7.x64.appx"
+        Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.7/Microsoft.UI.Xaml.2.8.x64.appx -outfile Microsoft.UI.Xaml.appx
+       
         Add-AppxPackage "$installFolder\Microsoft.UI.Xaml.2.7.x64.appx"
         Add-AppxPackage "$installFolder\WinGet.msixbundle"
         Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
