@@ -6,8 +6,8 @@ function get_required_files {
     # $filePath = Join-Path $system32Path "$filePrefix*.dll"
     # # Use Test-Path with wildcard to check if any file with the specified prefix exists
     # if (-not (Test-Path -Path $filePath)) {
-    .\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    #\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    #Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Pause
 
     # } 
@@ -60,9 +60,8 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "AivarAnnamaa.Thonny",
                 "PuTTY.PuTTY",
                 "Microsoft.VisualStudioCode",
-                "python.python.3.11",
+                "python.python.3.12",
                 "Brave.Brave",
-                "DuckDuckGo.DesktopBrowser",
                 "7zip.7zip")
 
 
@@ -72,24 +71,24 @@ if(-not $doesInstallerFolderExist){
 }     
 Set-Location -Path "$installFolder"
  
-Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
-if (-not $doesWgetExist) {
-    if(-not $doesWingetExist) {
-        Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
-        get_required_files
-        .\wget --no-hsts --no-check-cert -N "https://aka.ms/getwinget" -O "WinGet.msixbundle"
-        #.\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx" -O "Microsoft.UI.Xaml.2.7.x64.appx"
-        Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.7/Microsoft.UI.Xaml.2.8.x64.appx -outfile Microsoft.UI.Xaml.appx
-        Add-AppxPackage "$installFolder\Microsoft.UI.Xaml.2.7.x64.appx"
-        Add-AppxPackage "$installFolder\WinGet.msixbundle"
-        Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
-        Pause
-        Exit
-        }
-    get_required_files
-} else {
-    Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
-}
+#Write-Host -ForegroundColor Yellow "Checking to see if software is already installed.`n"
+#if (-not $doesWgetExist) {
+#     if(-not $doesWingetExist) {
+#         Write-Host -ForegroundColor Yellow "Winget and Support Files Not installed - Installing`n"
+#         get_required_files
+#         .\wget --no-hsts --no-check-cert -N "https://aka.ms/getwinget" -O "WinGet.msixbundle"
+#         #.\wget --no-hsts --no-check-cert -N "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx" -O "Microsoft.UI.Xaml.2.7.x64.appx"
+#         Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.7/Microsoft.UI.Xaml.2.8.x64.appx -outfile Microsoft.UI.Xaml.appx
+#         Add-AppxPackage "$installFolder\Microsoft.UI.Xaml.2.7.x64.appx"
+#         Add-AppxPackage "$installFolder\WinGet.msixbundle"
+#         Write-Host -ForegroundColor Red "You will need to close Powershell and re-run the original script to continue with this Installer."
+#         Pause
+#         Exit
+#         }
+#     get_required_files
+# } else {
+#     Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
+# }
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
 Write-Host -ForegroundColor Red "Please answer a 'y' to the question asked next"
 winget list winget
