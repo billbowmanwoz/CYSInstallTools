@@ -35,7 +35,7 @@ function hashCheck {
 Clear-Host
 UACPause
 Write-Host -ForegroundColor Yellow "Setting Location Variables for Installation`n"
-$currentUserPath = Resolve-Path ~
+#$currentUserPath = Resolve-Path ~
 $desktopPath = [System.IO.Path]::Combine($env:Public, 'Desktop')
 #desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
@@ -44,8 +44,8 @@ $ISOfolder = "$installFolder\ISOs"
 $pfLocation = $Env:ProgramFiles
 
 Write-Host -ForegroundColor Yellow "Making sure certain locations exist`n"
-$doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
-$doesWgetExist = Test-Path -Path "$installFolder\wget.exe"
+#$doesWingetExist = Test-Path -Path "$currentUserPath\AppData\Local\Microsoft\WindowsApps\winget.exe"
+#$doesWgetExist = Test-Path -Path "$installFolder\wget.exe"
 $doesInstallerFolderExist = Test-Path -Path "$installFolder"
 $doesOVAFolderExist = Test-Path -Path "$OVAfolder"
 $doesISOFolderExist = Test-Path -Path "$ISOfolder"
@@ -85,6 +85,7 @@ Set-Location -Path "$installFolder"
 #         Pause
 #         Exit
 #         }
+get_required_files
 #     get_required_files
 # } else {
 #     Write-Host -ForegroundColor White "Continuing installation, all base required files are installed."
