@@ -92,6 +92,9 @@ get_required_files
 # }
 Write-Host -ForegroundColor Yellow "Checking for already installed CYS apps"
 Write-Host -ForegroundColor Red "Please answer a 'y' to the question asked next"
+winget source remove winget
+winget source add winget https://cdn.winget.microsoft.com/cache
+winget source update
 winget list winget
 $vbInfo = winget search Oracle.Virtualbox
 $vbVerPattern = '\b\d{1,3}\.\d{1,3}\.\d{1,3}\b'
