@@ -165,4 +165,3 @@ for ($i = 0; $i -lt $length; $i++) {
 
 Write-Host -ForegroundColor Green "Installation process has completed. Please look back to see if any of the applications did not install, if they did not, please check with a mentor to see if there is any reason that it did not."
 Pause
-https://www.dropbox.com/scl/fi/yhdqoxtecg8so4f1eszfe/Kali-2024.ova?rlkey=jjjsy7xda7516r5jvvrmzyx0l&dl=0
