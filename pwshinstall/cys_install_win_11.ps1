@@ -138,7 +138,7 @@ Set-Location -Path "$OVAfolder"
 
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
 ..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/yhdqoxtecg8so4f1eszfe/Kali-2024.ova?rlkey=jjjsy7xda7516r5jvvrmzyx0l -O Kali-2024.ova
-..\wget --no-hsts --no-check-cert -N https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3 -O Kali-2024.ova.sha
+..\wget --no-hsts --no-check-cert -N https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3 -O Kali-2024.ova.sha256
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo -O pfSense-Router.ova
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/9rlqa83hqlq5bftjioeo2/pfSense-Router.ova.sha?rlkey=i58ioubob5srkiscgvubymue3 -O pfSense-Router.ova.sha
