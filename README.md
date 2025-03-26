@@ -1,4 +1,5 @@
-﻿# CYSInstallTools
+﻿# CYSInstallTools - Note: Please copy and paste the full command into the Powershell Window
+ 
 
 # Install on Windows 10  (Best if run in an Administrator Powershell Windows) 
 
