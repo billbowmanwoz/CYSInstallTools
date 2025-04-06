@@ -1,5 +1,6 @@
 import os
 import subprocess
+import re
 import tkinter as tk
 from tkinter import filedialog
 
@@ -22,14 +23,38 @@ def set_path():
     # Append the directory to PATH
     os.environ["PATH"] += os.pathsep + virtualbox_path
 
+def get_vm_list():
+    # Run the application and capture the output
+    # Replace 'your_app_command' with your actual command, e.g., './myapp' or 'somecommand'
+    result = subprocess.run(['vboxmanage', 'list', 'vms'], capture_output=True, text=True)
+
+    # Access the standard output
+    output = result.stdout
+
+    # Create list of dictionaries
+    vm_list = re.findall(r'"(.+?)"\s+\{[a-f0-9\-]+\}', output)
+    # vm_list = [{"VMName": name, "UUID": uuid} for name, uuid in re.findall(pattern, output)]
+
+    # Now vm_list holds your parsed data
+    return(vm_list)
+
 # System Configuration
 set_path()
+list_of_vms = get_vm_list()
+# print(list_of_vms)
 
 # VM Configuration
 VBOXMachineDir = get_vbox_vm_directory()
-VM_NAME = input("What is the name of the VM you want to create? ")
+non_unique_vm = True
+while non_unique_vm:
+    VM_NAME = input("What is the name of the VM you want to create? ")
+    if VM_NAME.lower() in (name.lower() for name in list_of_vms):
+        print('VM Exists, you cannot use this name.')
+    else: 
+        non_unique_vm = False
 
 OS_TYPE_MENU = """
+    Operating System Types:
     1. Linux
     2. Windows
     What one are we installing today? """
