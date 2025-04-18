@@ -112,13 +112,10 @@ run_command(f'VBoxManage.exe storageattach "{VM_NAME}" --storagectl "SATA Contro
 run_command(f'VBoxManage.exe storagectl "{VM_NAME}" --name "IDE Controller" --add ide')
 run_command(f'VBoxManage.exe storageattach "{VM_NAME}" --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium "{ISO_PATH}"')
 
-# Step 5: Set Boot Order
-# run_command(f'VBoxManage modifyvm "{VM_NAME}" --boot1 dvd --boot2 disk --boot3 none --boot4 none')
-
-# Step 6: Configure Network (NAT or Bridged)
+# Step 5: Configure Network (NAT or Bridged)
 run_command(f'VBoxManage modifyvm "{VM_NAME}" --nic1 nat')
 
-# Step 7: Start the VM
+# Step 6: Start the VM
 run_command(f'VBoxManage startvm "{VM_NAME}"')
 
-#print(f"Virtual Machine '{VM_NAME}' has been successfully created and started.")
+

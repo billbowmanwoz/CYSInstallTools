@@ -55,7 +55,7 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
-                "Insecure.Npcap"
+                #"Insecure.Npcap"
                 "Oracle.VirtualBox",
                 "AivarAnnamaa.Thonny",
                 "PuTTY.PuTTY",

@@ -1,5 +1,5 @@
 from pathlib import Path
-from os import environ, pathsep
+import os
 import subprocess
 import re
 import tkinter as tk
