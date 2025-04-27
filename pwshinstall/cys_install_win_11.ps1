@@ -1,6 +1,7 @@
 $ProgressPreference = 'SilentlyContinue'
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
+    Invoke-WebRequest -Uri "https://npcap.com/dist/npcap-1.82.exe" -UseBasicParsing -Outfile npcap.exe
     $systemRoot = $env:SystemRoot
     #$system32Path = Join-Path $systemRoot "System32"
     #$filePrefix = "vcruntime"
@@ -56,7 +57,6 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "zoom.zoom",
                 "SlackTechnologies.Slack",
                 "WiresharkFoundation.Wireshark",
-                #"Insecure.Npcap"
                 "Oracle.VirtualBox",
                 "AivarAnnamaa.Thonny",
                 "PuTTY.PuTTY",
