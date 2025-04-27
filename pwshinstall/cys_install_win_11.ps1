@@ -1,3 +1,4 @@
+$ProgressPreference = 'SilentlyContinue'
 function get_required_files {
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
     $systemRoot = $env:SystemRoot
