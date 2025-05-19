@@ -61,7 +61,7 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "AivarAnnamaa.Thonny",
                 "PuTTY.PuTTY",
                 "Microsoft.VisualStudioCode",
-                "python.python.3.12",
+                "python.python.3.13",
                 "Brave.Brave",
                 "DuckDuckGo.DesktopBrowser",
                 "7zip.7zip")
