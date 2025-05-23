@@ -151,8 +151,8 @@ if(-not $doesISOFolderExist){
 Set-Location -Path "$ISOfolder"
 #..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/s/wo5lkj6ps7avz40/ubuntu-22.04.1-live-server-amd64.iso -O ubuntu-22.04.1-live-server-amd64.iso
 #..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/snx6yh5a9phz30gwrv86a/ubuntu-22.04.1-live-server-amd64.iso.sha?rlkey=648qz1xpiw265athy7ghor2w4 -O ubuntu-22.04.1-live-server-amd64.iso.sha
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/9yode56dv2t8zvd735feg/ubuntu-24.04.2-live-server-amd64.iso.256?rlkey=6cd4s71tras7m6ceys5jcaif5&st=i04jsyuv -O ubuntu-24.04.2-live-server-amd64.iso.256
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/6tyw4ip0kmrgyu7t7oxd4/ubuntu-24.04.2-live-server-amd64.iso?rlkey=es6sd0awzovsqggrgdwtttsjc&st=je9b017j -O ubuntu-24.04.2-live-server-amd64.iso
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/9yode56dv2t8zvd735feg/ubuntu-24.04.2-live-server-amd64.iso.256?rlkey=6cd4s71tras7m6ceys5jcaif5&st=i04jsyuv" -O ubuntu-24.04.2-live-server-amd64.iso.256
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/6tyw4ip0kmrgyu7t7oxd4/ubuntu-24.04.2-live-server-amd64.iso?rlkey=es6sd0awzovsqggrgdwtttsjc&st=je9b017j" -O ubuntu-24.04.2-live-server-amd64.iso
 
 $ovaFileNames = @("kali-2023.ova",
                 "pfSense-Router.ova")
