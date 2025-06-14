@@ -138,8 +138,8 @@ if(-not $doesOVAFolderExist){
 Set-Location -Path "$OVAfolder"
 
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/yhdqoxtecg8so4f1eszfe/Kali-2024.ova?rlkey=jjjsy7xda7516r5jvvrmzyx0l -O Kali-2024.ova
-..\wget --no-hsts --no-check-cert -N https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3 -O Kali-2024.ova.sha256
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/yhdqoxtecg8so4f1eszfe/Kali-2024.ova?rlkey=jjjsy7xda7516r5jvvrmzyx0l" -O Kali-2024.ova
+..\wget --no-hsts --no-check-cert -N "https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3" -O Kali-2024.ova.sha256
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo -O pfSense-Router.ova
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/9rlqa83hqlq5bftjioeo2/pfSense-Router.ova.sha?rlkey=i58ioubob5srkiscgvubymue3 -O pfSense-Router.ova.sha
@@ -152,8 +152,8 @@ if(-not $doesISOFolderExist){
 Set-Location -Path "$ISOfolder"
 #..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/s/wo5lkj6ps7avz40/ubuntu-22.04.1-live-server-amd64.iso -O ubuntu-22.04.1-live-server-amd64.iso
 #..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/snx6yh5a9phz30gwrv86a/ubuntu-22.04.1-live-server-amd64.iso.sha?rlkey=648qz1xpiw265athy7ghor2w4 -O ubuntu-22.04.1-live-server-amd64.iso.sha
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/9yode56dv2t8zvd735feg/ubuntu-24.04.2-live-server-amd64.iso.256?rlkey=6cd4s71tras7m6ceys5jcaif5&st=i04jsyuv -O ubuntu-24.04.2-live-server-amd64.iso.256
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/6tyw4ip0kmrgyu7t7oxd4/ubuntu-24.04.2-live-server-amd64.iso?rlkey=es6sd0awzovsqggrgdwtttsjc&st=je9b017j -O ubuntu-24.04.2-live-server-amd64.iso
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/9yode56dv2t8zvd735feg/ubuntu-24.04.2-live-server-amd64.iso.256?rlkey=6cd4s71tras7m6ceys5jcaif5&st=i04jsyuv" -O ubuntu-24.04.2-live-server-amd64.iso.256
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/6tyw4ip0kmrgyu7t7oxd4/ubuntu-24.04.2-live-server-amd64.iso?rlkey=es6sd0awzovsqggrgdwtttsjc&st=je9b017j" -O ubuntu-24.04.2-live-server-amd64.iso
 
 
 
