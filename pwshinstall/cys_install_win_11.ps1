@@ -8,15 +8,15 @@ function get_required_files {
     # $filePath = Join-Path $system32Path "$filePrefix*.dll"
     # # Use Test-Path with wildcard to check if any file with the specified prefix exists
     # if (-not (Test-Path -Path $filePath)) {
-    #\wget --no-hsts --no-check-cert -N "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-    #Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" -UseBasicParsing -Outfile Microsoft.VCLibs.x64.14.00.Desktop.appx
+    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Pause
 
     # } 
     # else {
     #     Write-Host "Visual C++ Runtime already exists. Continuing."
     # }
-    .\wget --no-hsts --no-check-cert -N "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_11.ps1" -O "$desktopPath\cys_install_win_11.ps1"
+    Invoke-WebRequest -Uri "https://github.com/billbowmanwoz/CYSInstallTools/raw/main/pwshinstall/cys_install_win_11.ps1" -UseBasicParsing -Outfile "$desktopPath\cys_install_win_11.ps1"
 }
 function UACPause {
     Write-Host -ForegroundColor Red "`n`n`n`n`n`nOnce You Press ENTER, please watch for the UAC Shield Prompt to continue installations. This will happen for some of the installs, it will appear as if the installation has stopped.`n"
@@ -122,8 +122,8 @@ foreach ($app in $appsWingetInstall){
 }
 Write-Host -ForegroundColor Yellow "Installing apps that need special handling`n"
 
-.\wget --no-hsts --no-check-cert -N "https://nmap.org/dist/nmap-7.94-setup.exe"
-.\wget --no-hsts --no-check-cert -N "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"
+Invoke-WebRequest -Uri "https://nmap.org/dist/nmap-7.94-setup.exe" -UseBasicParsing -OutFile "nmap-7.94-setup.exe"
+Invoke-WebRequest -Uri "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack" -UseBasicParsing -OutFile "Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"  
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
 & $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack --accept-license=33d7284dc4a0ece381196fda3cfe2ed0e1e8e7ed7f27b9a9ebc4ee22e24bd23c
