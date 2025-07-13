@@ -142,8 +142,8 @@ Set-Location -Path "$OVAfolder"
 ..\wget --no-hsts --no-check-cert -N "https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3" -O Kali-2024.ova.sha256
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/41jn8qadipo4ftbwh5lja/pfSense-Router.ova?rlkey=0qh1fxd0y9xj7e6nv21qifsjm&st=y2iq8m8w -O pfSense-Router.ova
-..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/9m32kg6leazovs40br9gx/pfSense-Router.ova.sha256?rlkey=zowyl6vswvid5tam2n9dc8g6e&st=vo1nvlwg -O pfSense-Router.ova.sha
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/41jn8qadipo4ftbwh5lja/pfSense-Router.ova?rlkey=0qh1fxd0y9xj7e6nv21qifsjm&st=y2iq8m8w" -O pfSense-Router.ova
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/9m32kg6leazovs40br9gx/pfSense-Router.ova.sha256?rlkey=zowyl6vswvid5tam2n9dc8g6e&st=vo1nvlwg" -O pfSense-Router.ova.sha
 
 Write-Host -ForegroundColor Yellow "Setting download location to $ISOfolder"
 
