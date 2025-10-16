@@ -9,7 +9,7 @@ function get_required_files {
     # # Use Test-Path with wildcard to check if any file with the specified prefix exists
     # if (-not (Test-Path -Path $filePath)) {
     Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" -UseBasicParsing -Outfile Microsoft.VCLibs.x64.14.00.Desktop.appx
-    Add-AppxPackage "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+    Add-AppxPackage -ErrorAction SilentlyContinue "$installFolder\Microsoft.VCLibs.x64.14.00.Desktop.appx"
     Pause
 
     # } 
