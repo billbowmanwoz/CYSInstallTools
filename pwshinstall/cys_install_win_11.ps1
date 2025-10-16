@@ -138,13 +138,13 @@ if(-not $doesOVAFolderExist){
 Set-Location -Path "$OVAfolder"
 
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/t8rqyornhedwt4e/kali-2023.ova -O kali-2023.ova
-..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/yhdqoxtecg8so4f1eszfe/Kali-2024.ova?rlkey=jjjsy7xda7516r5jvvrmzyx0l" -O Kali-2024.ova
-..\wget --no-hsts --no-check-cert -N "https://www.dropbox.com/scl/fi/dka1t7e8h3fktf5nazbxi/Kali-2024.ova.sha256?rlkey=968pqyu5tp44m98a83ub8kml3" -O Kali-2024.ova.sha256
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/htf57gnzxsgg1qb4e1c7u/Kali-2025.ova?rlkey=i6al8ft3zawt2z2bsgmfaafm3" -O Kali-2025.ova
+..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/fnw2h4jsc98l6ndjakmq5/Kali-2025.ova.sha256?rlkey=utgu61pba6se80ygkwwj4wnlm" -O Kali-2025.ova.sha256
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/s/zlk19cq2ued2ki3/kali-2023-sha.txt -O kali-2023-sha.txt
 #..\wget --no-hsts --no-check-cert -N https://dl.dropboxusercontent.com/scl/fi/rj3aqa15mglb3v3r4byzu/pfSense-Router.ova?rlkey=qprrxsgwlorkxcxj96ars8dmo
 ..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/41jn8qadipo4ftbwh5lja/pfSense-Router.ova?rlkey=0qh1fxd0y9xj7e6nv21qifsjm&st=y2iq8m8w" -O pfSense-Router.ova
 ..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/9m32kg6leazovs40br9gx/pfSense-Router.ova.sha256?rlkey=zowyl6vswvid5tam2n9dc8g6e&st=vo1nvlwg" -O pfSense-Router.ova.sha
-
+https://www.dropbox.com/scl/fi/fnw2h4jsc98l6ndjakmq5/Kali-2025.ova.sha256?rlkey=utgu61pba6se80ygkwwj4wnlm&dl=0
 Write-Host -ForegroundColor Yellow "Setting download location to $ISOfolder"
 
 if(-not $doesISOFolderExist){
@@ -155,13 +155,13 @@ Set-Location -Path "$ISOfolder"
 #..\wget --no-hsts --no-check-cert -N https://dl.dropbox.com/scl/fi/snx6yh5a9phz30gwrv86a/ubuntu-22.04.1-live-server-amd64.iso.sha?rlkey=648qz1xpiw265athy7ghor2w4 -O ubuntu-22.04.1-live-server-amd64.iso.sha
 ..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/9yode56dv2t8zvd735feg/ubuntu-24.04.2-live-server-amd64.iso.256?rlkey=6cd4s71tras7m6ceys5jcaif5&st=i04jsyuv" -O ubuntu-24.04.2-live-server-amd64.iso.256
 ..\wget --no-hsts --no-check-cert -N "https://dl.dropbox.com/scl/fi/6tyw4ip0kmrgyu7t7oxd4/ubuntu-24.04.2-live-server-amd64.iso?rlkey=es6sd0awzovsqggrgdwtttsjc&st=je9b017j" -O ubuntu-24.04.2-live-server-amd64.iso
+https://www.dropbox.com/scl/fi/htf57gnzxsgg1qb4e1c7u/Kali-2025.ova?rlkey=i6al8ft3zawt2z2bsgmfaafm3&dl=0
 
 
-
-$ovaFileNames = @("Kali-2024.ova",
+$ovaFileNames = @("Kali-2025.ova",
                   "pfSense-Router.ova"
                 )
-$hashFilenames = @("Kali-2024.ova.sha256",
+$hashFilenames = @("Kali-2025.ova.sha256",
                 "pfSense-Router.ova.sha256"
                 )
 
