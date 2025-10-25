@@ -127,7 +127,7 @@ Invoke-WebRequest -Uri "https://nmap.org/dist/nmap-7.94-setup.exe" -UseBasicPars
 Invoke-WebRequest -Uri "https://download.virtualbox.org/virtualbox/$vbAppVersion/Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack" -UseBasicParsing -OutFile "Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack"  
 
 Write-Host -ForegroundColor Yellow "On the next screen, Virtualbox will be installing the Extension Pack, to continue, please answer 'Y' to the license terms."
-& $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack --accept-license=33d7284dc4a0ece381196fda3cfe2ed0e1e8e7ed7f27b9a9ebc4ee22e24bd23c
+& $pfLocation\Oracle\VirtualBox\VBoxManage.exe extpack install Oracle_VirtualBox_Extension_Pack-$vbAppVersion.vbox-extpack --accept-license=eb31505e56e9b4d0fbca139104da41ac6f6b98f8e78968bdf01b1f3da3c4f9ae
 Write-Host -ForegroundColor Yellow "Next a Network will be created, in case it was not during install"
 & $pfLocation\Oracle\VirtualBox\VBoxManage natnetwork add --netname NATNetwork --network "10.0.2.0/24" --dhcp on
 
