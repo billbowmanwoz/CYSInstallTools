@@ -38,7 +38,8 @@ Clear-Host
 UACPause
 Write-Host -ForegroundColor Yellow "Setting Location Variables for Installation`n"
 #$currentUserPath = Resolve-Path ~
-$desktopPath = [System.IO.Path]::Combine($env:Public, 'Desktop')
+$desktopPath = "D:\CYS_Desktop
+# $desktopPath = [System.IO.Path]::Combine($env:Public, 'Desktop')
 #desktopPath = [Environment]::GetFolderPath('Desktop')
 $installFolder = "$desktopPath\CYS-Installer"
 $OVAfolder = "$installFolder\OVAs"
