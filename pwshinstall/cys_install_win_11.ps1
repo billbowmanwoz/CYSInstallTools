@@ -64,6 +64,7 @@ $appsWinget = @("Microsoft.VCRedist.2015+.x64",
                 "Microsoft.VisualStudioCode",
                 "python.python.3.13",
                 "Brave.Brave",
+                "Git.Git",
                 "7zip.7zip")
 
 
