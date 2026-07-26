@@ -1,6 +1,8 @@
 $ProgressPreference = 'SilentlyContinue'
 function get_required_files {
+    Write-Host - ForegroundColor Green "Downloading wget"
     Invoke-WebRequest -Uri "https://eternallybored.org/misc/wget/1.21.4/64/wget.exe" -UseBasicParsing -Outfile wget.exe
+    Write-Host - ForegroundColor Green "Downloading NPCAP"
     Invoke-WebRequest -Uri "https://npcap.com/dist/npcap-1.82.exe" -UseBasicParsing -Outfile npcap.exe
     $systemRoot = $env:SystemRoot
     #$system32Path = Join-Path $systemRoot "System32"
